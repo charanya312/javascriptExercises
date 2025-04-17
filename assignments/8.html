@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My List</title>
+  <style>
+    .item {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>My List</h1>
+    <ul id="myList">
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+    <button id="addButton">Add Item</button>
+  </div>
+
+  <!-- ✅ JavaScript at the end to ensure elements exist -->
+  <script>
+    // Function to create a new list item
+    function createListItem(text) {
+      const li = document.createElement("li");
+      li.textContent = text;
+      li.className = "item";
+      li.addEventListener("click", function () {
+        li.remove();
+      });
+      return li;
+    }
+
+    // DOM is ready, so we can safely access elements
+    const addButton = document.getElementById("addButton");
+    const myList = document.getElementById("myList");
+
+    // Add click event to button
+    addButton.addEventListener("click", function () {
+      const newItem = createListItem("New Item");
+      myList.appendChild(newItem);
+    });
+
+    // Make existing items removable
+    document.querySelectorAll("#myList .item").forEach(item => {
+      item.addEventListener("click", function () {
+        item.remove();
+      });
+    });
+  </script>
+</body>
+</html>

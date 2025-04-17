@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Book(title, author, ISBN) {
+            return {
+              title: title,
+              author: author,
+              ISBN: ISBN,
+              isBorrowed: false,
+          
+              borrow: function () {
+                if (!this.isBorrowed) {
+                  this.isBorrowed = true;
+                  console.log(`${this.title} has been borrowed.`);
+                } else {
+                  console.log(`${this.title} is already borrowed.`);
+                }
+              },
+          
+              returnBook: function () {
+                if (this.isBorrowed) {
+                  this.isBorrowed = false;
+                  console.log(`${this.title} has been returned.`);
+                } else {
+                  console.log(`${this.title} was not borrowed.`);
+                }
+              }
+            };
+          }
+          function Library() {
+            return {
+              books: [],
+          
+              addBook: function (book) {
+                this.books.push(book);
+                console.log(`Added "${book.title}" to the library.`);
+              },
+          
+              findBookByISBN: function (isbn) {
+                return this.books.find(book => book.ISBN === isbn);
+              },
+          
+              listAvailableBooks: function () {
+                return this.books.filter(book => !book.isBorrowed);
+              },
+          
+              listBorrowedBooks: function () {
+                return this.books.filter(book => book.isBorrowed);
+              }
+            };
+          }
+        const library = Library();
+
+        const book1 = Book("The Alchemist", "Paulo Coelho", "12345");
+        const book2 = Book("1984", "George Orwell", "67890");
+
+        library.addBook(book1);
+        library.addBook(book2);
+
+        book1.borrow();
+
+        console.log("Available Books:");
+        library.listAvailableBooks().forEach(book => console.log(book.title));
+
+        console.log("Borrowed Books:");
+        library.listBorrowedBooks().forEach(book => console.log(book.title));
+
+        const found = library.findBookByISBN("67890");
+        console.log("Found Book:", found.title);
+
+        book1.returnBook();
+                    
+    </script>
+</body>
+</html>

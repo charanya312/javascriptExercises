@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f2f2f2;
+    }
+
+    .counter-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #countDisplay {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #incrementBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #incrementBtn:hover {
+      background-color: #45a049;
+    }
+
+    #decrementBtn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #decrementBtn:hover {
+      background-color: #da190b;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-container">
+    <span id="countDisplay">0</span>
+    <br>
+    <button id="incrementBtn">Increment</button>
+    <button id="decrementBtn">Decrement</button>
+  </div>
+
+  <script>
+    let count = 0;
+
+    const countDisplay = document.getElementById("countDisplay");
+    const incrementBtn = document.getElementById("incrementBtn");
+    const decrementBtn = document.getElementById("decrementBtn");
+
+    incrementBtn.addEventListener("click", function () {
+      count++;
+      countDisplay.textContent = count;
+    });
+
+    decrementBtn.addEventListener("click", function () {
+      if (count > 0) {
+        count--;
+        countDisplay.textContent = count;
+      }
+    });
+  </script>
+</body>
+</html>

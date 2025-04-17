@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        function createCalculator() {
+            return {
+              add: function(a, b) {
+                return a + b;
+              },
+              subtract: function(a, b) {
+                return a - b;
+              },
+              multiply: function(a, b) {
+                return a * b;
+              },
+              divide: function(a, b) {
+                if (b === 0) {
+                  return "Error: Cannot divide by zero";
+                }
+                return a / b;
+              }
+            };
+          }
+          
+          // ✅ Using the calculator
+          const calculator = createCalculator();
+          
+          console.log("Add:", calculator.add(5, 3));         // Output: 8
+          console.log("Subtract:", calculator.subtract(5, 3)); // Output: 2
+          console.log("Multiply:", calculator.multiply(5, 3)); // Output: 15
+          console.log("Divide:", calculator.divide(6, 3));     // Output: 2
+          console.log("Divide by zero:", calculator.divide(6, 0)); // Output: Error
+          
+    </script>
+</body>
+</html>
