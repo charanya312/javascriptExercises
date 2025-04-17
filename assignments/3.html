@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+    <style>
+        .highlight {
+          background-color: lightblue;
+          font-weight: bold;
+        }
+      </style>
+</head>
+
+<body>
+    <ul id="myList">
+        <li>orange</li>
+        <li>mango</li>
+        <li>vaishu</li>
+        <li>cherry</li>
+    </ul>
+    <script>
+        // 1. Select all the list items
+        const listItems = document.querySelectorAll('#myList li');
+        console.log("All list items selected:", listItems);
+
+        // 2. Iterate through each list item and log its text content
+        listItems.forEach((item, index) => {
+        console.log(`Item ${index + 1} text:`, item.textContent);
+        });
+
+        // 3. Add a class "highlight" to every second list item (i.e., 1-based even index)
+        listItems.forEach((item, index) => {
+        if ((index + 1) % 2 === 0) {
+            item.classList.add('highlight');
+            console.log(`Item ${index + 1} highlighted:`, item.textContent);
+        }
+        });
+
+        // 4. Log the total number of list items
+        console.log("Total number of list items:", listItems.length);
+
+    </script>
+</body>
+</html>

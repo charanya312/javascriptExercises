@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Formatter with Buttons</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    .btn-input {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+    }
+    .btn-input label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .btn-input input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      width: 200px;
+      text-align: center;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Currency Formatter</h2>
+
+  <div class="btn-input">
+    <label for="amount">Amount</label>
+    <input type="text" id="amount" placeholder="Enter amount">
+  </div>
+
+  <div class="btn-input">
+    <label for="currency">CurrencyCode</label>
+    <input type="text" id="currency" placeholder="e.g., USD, INR">
+  </div>
+
+  <br>
+  <button onclick="handleFormat()">Click Me</button>
+
+  <div id="result"></div>
+
+  <script>
+    function formatCurrency(amount, currencyCode) {
+      if (isNaN(amount)) {
+        return 'Invalid amount';
+      }
+
+      try {
+        const formatter = new Intl.NumberFormat(undefined, {
+          style: 'currency',
+          currency: currencyCode,
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        return formatter.format(amount);
+      } catch (error) {
+        return 'Invalid currency code';
+      }
+    }
+
+    function handleFormat() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const currencyCode = document.getElementById('currency').value.toUpperCase().trim();
+      const result = formatCurrency(amount, currencyCode);
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+
+</body>
+</html>

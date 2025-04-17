@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conditions</title>
+</head>
+<body>
+    <script>
+        const user={
+            //driving related
+            age:22,
+            haslicense:false,
+            //weather related
+            temperature:29,
+            humidity:50,
+            //role related
+            role:"editor",
+            isActive:true,
+            //student related
+            isstudent:true,
+            grade:11,
+            gpa:9.6,
+            // Device-related
+            batteryLevel: 15,
+            isCharging: false,
+            // Security-related
+            failedLogins: 1,
+            isLocked: false,
+            // Subscription-related
+            subscriptionEndsInDays: 4,
+            autoRenew: false
+        };
+        function evaluateConditions(obj) {
+            // Condition 1: Driving eligibility
+            if (obj.age > 18 && obj.hasLicense) {
+              console.log("Eligible to drive");
+            }
+          
+            // Condition 2: Discomfort warning
+            if (obj.temperature > 30 || obj.humidity > 70) {
+              console.log("Warning: High discomfort level");
+            }
+          
+            // Condition 3: Role and activity check
+            if ((obj.role === "admin" || obj.role === "editor") && obj.isActive) {
+              console.log( "Access granted");
+            }
+          
+            // NEW Condition 4: Student eligibility for scholarship
+            if (obj.isStudent && obj.grade >= 9 && obj.grade <= 12 && obj.gpa >= 3.5) {
+              console.log( "Eligible for scholarship");
+            }
+          
+            // NEW Condition 5: Device warning check
+            if (obj.batteryLevel < 20 && !obj.isCharging) {
+              console.log( "Warning: Low battery, please charge your device");
+            }
+          
+            // NEW Condition 6: Login security check
+            if (obj.failedLogins >= 3 || obj.isLocked) {
+              console.log( "Account locked due to security concerns");
+            }
+          
+            // NEW Condition 7: Subscription renewal notice
+            if (obj.subscriptionEndsInDays <= 5 && obj.autoRenew === false) {
+              console.log( "Reminder: Your subscription is about to expire");
+            }
+          
+            // Default case
+            console.log( "Conditions not met");
+          }
+          evaluateConditions(user);
+    </script>
+</body>
+</html>
